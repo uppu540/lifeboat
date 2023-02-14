@@ -24325,8 +24325,8 @@ body .tpd-size-medium .tpd-content {
 
 @media only screen and (max-width: 767px) {
     .edu-header .header-mainmenu {
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
 }
 
@@ -24389,6 +24389,14 @@ body .tpd-size-medium .tpd-content {
     display: none;
 }
 
+.edu-header .header-brand img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
 .edu-header .header-brand img.logo-light {
     display: inline-block;
 }
@@ -24405,6 +24413,7 @@ body .tpd-size-medium .tpd-content {
 
 .edu-header .header-brand .logo a {
     display: block;
+    height: 80px;
 }
 
 .edu-header .header-category {
