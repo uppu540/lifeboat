@@ -968,6 +968,31 @@
         </svg>
     </div>
 
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <a class="close" data-dismiss="modal">×</a>
+            <div class="modal-content">
+                <div class="custom-modal">
+                    <div class="custom-modal-img">
+                        <img src="assets/images/course/course-40.jpg" alt="">
+                    </div>
+                    <div class="custom-main-text">
+                        <div class="custom-main-title">
+                            Unlock 10% off Today
+                        </div>
+                        <div class="custom-main-sub">
+                            When you signup for emails and texts
+                        </div>
+                    </div>
+                    <div class="custom-main-form">
+                        <input type="number" placeholder="Enter Phone Number.." min="10" max="10" required >
+                        <a class="register-btn" type="submit" id="register" >Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JS
 	============================================ -->
     <!-- Modernizer JS -->
@@ -1021,5 +1046,17 @@
 
     <!-- Site Scripts -->
     <script src="assets/js/app.js"></script>
+
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#myModal').modal('show');
+        });
+
+        $('#register').click(function() {
+            $('#myModal').modal('hide');;
+        });
+
+    </script>
+
 </body>
 </html>
