@@ -977,10 +977,11 @@
         </svg>
     </div>
 
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="myModal"  tabindex="-1" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered">
-            <a class="close" data-dismiss="modal">×</a>
             <div class="modal-content">
+                <a class="close" data-bs-dismiss="modal">×</a>
                 <div class="custom-modal" id="data-container">
                     <div class="custom-modal-img">
                         <img id="image-container" src="" alt="">
@@ -993,7 +994,7 @@
                         <form action="mail.php" id="registerForm" method="post">
                             <input type="email" id="email"  placeholder="Enter Email ID.."  required >
                             <input type="number" id="number" placeholder="Enter Phone Number.." min="10" max="10" required >
-                            <a class="register-btn" type="submit" value="Submit" id="register" >Register</a>
+                            <a class="register-btn" type="submit" data-bs-dismiss="modal" value="Submit" id="register" >Register</a>
                         </form>
                     </div>
                 </div>
@@ -1059,6 +1060,46 @@
         $(window).on('load', function() {
             $('#myModal').modal('show');
         });
+
+        // Get the modal element
+        var modal = document.querySelector('#myModal');
+
+        // Get the form element
+        var form = document.querySelector('#registerForm');
+
+        // Add event listener to the form submission button
+        form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        // Submit the form using AJAX or default form submission
+         // Submit the form using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', form.action);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Handle the response here
+                closeModal();
+            } else {
+                // Handle errors here
+            }
+            }
+        };
+        xhr.send(new FormData(form));
+
+        // Close the modal after the form has been submitted
+        closeModal();
+        });
+
+        // Function to close the modal
+        function closeModal() {
+            $('#myModal').modal('hide');
+        }
+
+
+
+
     </script>
 
 <script>
@@ -1080,20 +1121,6 @@
         }).catch(err => {
         // Do something for an error here
         });
-
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the form from submitting normally
-        this.submit(); // Submit the form using AJAX or default form submission
-        window.close(); // Close the popup window
-        });
-
-        // Example using jQuery
-        $('#registerForm').on('submit', function(e) {
-        e.preventDefault();
-        $(this).submit();
-        $('#myModal').modal('hide');
-        });
-
 </script>
 
 </body>

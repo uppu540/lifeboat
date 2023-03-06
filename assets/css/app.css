@@ -33724,7 +33724,7 @@ html[dir="rtl"] .swiper-testimonial-slider-wrapper .swiper-slide.swiper-slide-vi
 }
 .modal .close {
     position: absolute;
-    top: 40px;
+    top: 0px;
     right: -10px;
     font-size: 25px;
     color: #000;
