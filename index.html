@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js">
 <head>
     <!-- Meta Data -->
     <meta charset="UTF-8">
@@ -94,6 +94,11 @@
                                     <li>
                                         <a href="faq.html">Faq</a>
                                     </li>
+                                    
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                    </li>
+
                                     <li>
                                         <a href="contact-us.html">Contact</a>
                                     </li>
@@ -155,6 +160,10 @@
                         
                         <li>
                             <a href="faq.html">Faq</a>
+                        </li>
+
+                        <li>
+                            <a href="blog.html">Blog</a>
                         </li>
 
                         <li>
@@ -972,21 +981,20 @@
         <div class="modal-dialog modal-dialog-centered">
             <a class="close" data-dismiss="modal">×</a>
             <div class="modal-content">
-                <div class="custom-modal">
+                <div class="custom-modal" id="data-container">
                     <div class="custom-modal-img">
-                        <img src="assets/images/course/course-40.jpg" alt="">
+                        <img id="image-container" src="" alt="">
                     </div>
                     <div class="custom-main-text">
-                        <div class="custom-main-title">
-                            Unlock 10% off Today
-                        </div>
-                        <div class="custom-main-sub">
-                            When you signup for emails and texts
-                        </div>
+                        <div class="custom-main-title" id="popup_title"></div>
+                        <div class="custom-main-sub" id="popup_descp"></div>
                     </div>
                     <div class="custom-main-form">
-                        <input type="number" placeholder="Enter Phone Number.." min="10" max="10" required >
-                        <a class="register-btn" type="submit" id="register" >Register</a>
+                        <form action="mail.php" id="registerForm" method="post">
+                            <input type="email" id="email"  placeholder="Enter Email ID.."  required >
+                            <input type="number" id="number" placeholder="Enter Phone Number.." min="10" max="10" required >
+                            <a class="register-btn" type="submit" value="Submit" id="register" >Register</a>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1051,12 +1059,42 @@
         $(window).on('load', function() {
             $('#myModal').modal('show');
         });
+    </script>
 
-        $('#register').click(function() {
-            $('#myModal').modal('hide');;
+<script>
+       var apiUrl = 'https://stgapi.nandeeshwaraseeds.com/app/upcomingPopup';
+        fetch(apiUrl).then(response => {
+        return response.json();
+        }).then(data => {
+        popup_title = data.info.title;
+        popup_description = data.info.description;
+        const imageUrl = data.info.img; // Extract the image URL from the response data
+        const image = document.getElementById('image-container');
+        image.src = imageUrl;
+        console.log();
+        // appending
+
+        $('#popup_title').html(popup_title);
+        $('#popup_descp').html(popup_description);
+
+        }).catch(err => {
+        // Do something for an error here
         });
 
-    </script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+        this.submit(); // Submit the form using AJAX or default form submission
+        window.close(); // Close the popup window
+        });
+
+        // Example using jQuery
+        $('#registerForm').on('submit', function(e) {
+        e.preventDefault();
+        $(this).submit();
+        $('#myModal').modal('hide');
+        });
+
+</script>
 
 </body>
 </html>

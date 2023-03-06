@@ -26768,6 +26768,7 @@ body .tpd-size-medium .tpd-content {
 }
 
 .edu-blog .thumbnail a {
+    width: 200px;
     display: block;
     border-radius: 10px;
     position: relative;
@@ -33698,7 +33699,7 @@ html[dir="rtl"] .swiper-testimonial-slider-wrapper .swiper-slide.swiper-slide-vi
 }
 
 .custom-main-form {
-    padding: 30px 20px;
+    padding: 0px 30px 20px;
 }
 
 .custom-main-form input{
