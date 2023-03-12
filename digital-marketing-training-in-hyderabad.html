@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-
-
-<!-- Mirrored from edublink.html.devsblink.com/course-details-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Feb 2023 02:43:59 GMT -->
 <head>
     <!-- Meta Data -->
     <meta charset="UTF-8">
@@ -524,12 +521,26 @@
                                             </li>
                                         </ul>
                                         <div class="read-more-btn">
-                                            <a href="assets/brochure.pdf" class="edu-btn">Download Broucher <i class="icon-4"></i></a>
+                                            <a data-bs-toggle="modal" data-bs-target="#broucherDownload" class="edu-btn cursor">Download Broucher <i class="icon-4"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="edu-blog-widget widget-categories">
+                            <div class="inner">
+                                <h4 class="widget-title">Related Courses</h4>
+                                <div class="content">
+                                    <ul class="category-list">
+                                        <li><a href="Ios-training-program.html">iOS Training</a></li>
+                                        <li><a href="aws-training-in-hyderabad.html">AWS Training Program</a></li>
+                                        <li><a href="android-training-in-hyderabad.html">Android Application Development Program</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -751,6 +762,31 @@
         </svg>
     </div>
 
+    <div class="modal fade" id="broucherDownload"  tabindex="-1" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <a class="close" data-bs-dismiss="modal">×</a>
+                <div class="custom-modal" id="data-container">
+                    <div class="custom-modal-img">
+                        <img src="assets/images/course/course-09.jpg" alt="">
+                    </div>
+                    <div class="custom-main-text">
+                        <div class="custom-main-title">Fill the below details</div>
+                        <div class="custom-main-sub">Don't miss the opportunity...</div>
+                    </div>
+                    <div class="custom-main-form">
+                        <form action="broucher.php" id="broucherForm" method="post">
+                            <input type="email" id="email"  placeholder="Enter Email ID.."  required >
+                            <input type="number" id="number" placeholder="Enter Phone Number.." min="10" max="10" required >
+                            <a class="register-btn" type="submit" value="Submit" id="register" >Register</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JS
 	============================================ -->
     <!-- Modernizer JS -->
@@ -778,8 +814,15 @@
 
     <!-- Site Scripts -->
     <script src="assets/js/app.js"></script>
+
+    <script>
+        // Function to close the modal
+        $('#register').click(function(){
+            $('#broucherDownload').modal('hide');
+            window.location = 'assets/brochure.pdf';
+        });
+
+    </script>
+
 </body>
-
-
-<!-- Mirrored from edublink.html.devsblink.com/course-details-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Feb 2023 02:43:59 GMT -->
 </html>

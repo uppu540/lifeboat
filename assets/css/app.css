@@ -3635,6 +3635,7 @@ button.edu-btn {
     overflow: hidden;
     position: relative;
     z-index: 1;
+    cursor:pointer;
 }
 
 @media only screen and (max-width: 767px) {
@@ -9334,6 +9335,7 @@ body.sal-disabled [data-sal|='flip'] {
     -webkit-transition: var(--transition);
     transition: var(--transition);
     display: inline-table;
+    cursor: pointer;
 }
 
 .edu-course .course-hover-content .content {

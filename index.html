@@ -412,7 +412,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="courses.html">
-                                        <img src="assets/images/course/course-01.jpg" alt="Course Meta">
+                                        <img src="assets/images/banner/ios.jpg" alt="Course Meta">
                                     </a>
                                     <div class="time-top">
                                         <span class="duration"><i class="icon-61"></i>2 Months</span>
@@ -431,7 +431,7 @@
                             <div class="course-hover-content-wrapper">
                                 <button class="wishlist-btn"><i class="icon-22"></i></button>
                             </div>
-                            <div class="course-hover-content">
+                            <div class="course-hover-content" id="iosClick" onclick="location.href='Ios-training-program.html'">
                                 <div class="content">
                                     <button class="wishlist-btn"><i class="icon-22"></i></button>
                                     <span class="course-level">Beginner</span>
@@ -454,7 +454,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="courses.html">
-                                        <img src="assets/images/course/course-01.jpg" alt="Course Meta">
+                                        <img src="assets/images/banner/android.jpg" alt="Course Meta">
                                     </a>
                                     <div class="time-top">
                                         <span class="duration"><i class="icon-61"></i>2 Months</span>
@@ -473,7 +473,7 @@
                             <div class="course-hover-content-wrapper">
                                 <button class="wishlist-btn"><i class="icon-22"></i></button>
                             </div>
-                            <div class="course-hover-content">
+                            <div class="course-hover-content" id="androidClick" onclick="location.href='android-training-in-hyderabad.html'">
                                 <div class="content">
                                     <button class="wishlist-btn"><i class="icon-22"></i></button>
                                     <h5 class="title">
@@ -495,7 +495,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="courses.html">
-                                        <img src="assets/images/course/course-01.jpg" alt="Course Meta">
+                                        <img src="assets/images/banner/aws.jpg" alt="Course Meta">
                                     </a>
                                     <div class="time-top">
                                         <span class="duration"><i class="icon-61"></i>2 Months</span>
@@ -514,7 +514,7 @@
                             <div class="course-hover-content-wrapper">
                                 <button class="wishlist-btn"><i class="icon-22"></i></button>
                             </div>
-                            <div class="course-hover-content">
+                            <div class="course-hover-content" id="awsClick" onclick="location.href='aws-training-in-hyderabad.html'">
                                 <div class="content">
                                     <button class="wishlist-btn"><i class="icon-22"></i></button>
                                     <h5 class="title">
@@ -536,7 +536,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="courses.html">
-                                        <img src="assets/images/course/course-01.jpg" alt="Course Meta">
+                                        <img src="assets/images/banner/digi.jpg" alt="Course Meta">
                                     </a>
                                     <div class="time-top">
                                         <span class="duration"><i class="icon-61"></i>2 Months</span>
@@ -555,7 +555,7 @@
                             <div class="course-hover-content-wrapper">
                                 <button class="wishlist-btn"><i class="icon-22"></i></button>
                             </div>
-                            <div class="course-hover-content">
+                            <div class="course-hover-content" id="digiClick" onclick="location.href='digital-marketing-training-in-hyderabad.html'">
                                 <div class="content">
                                     <button class="wishlist-btn"><i class="icon-22"></i></button>
                                     <h5 class="title">
@@ -588,7 +588,7 @@
                         <div class="video-gallery">
                             <div class="thumbnail">
                                 <img src="assets/images/others/video-01.webp" alt="Thumb">
-                                <a href="https://www.youtube.com/watch?v=F5sts1n57WU" class="video-play-btn video-popup-activation">
+                                <a href="https://www.youtube.com/watch?v=OuOKvB95-44" class="video-play-btn video-popup-activation">
                                     <i class="icon-18"></i>
                                 </a>
                             </div>
@@ -1105,7 +1105,10 @@
 <script>
        var apiUrl = 'https://stgapi.nandeeshwaraseeds.com/app/upcomingPopup';
         fetch(apiUrl).then(response => {
-        return response.json();
+        if (response.status === 404) {
+            throw new Error('Data not found');
+            }
+            return response.json();
         }).then(data => {
         popup_title = data.info.title;
         popup_description = data.info.description;
@@ -1119,8 +1122,29 @@
         $('#popup_descp').html(popup_description);
 
         }).catch(err => {
-        // Do something for an error here
+            const myElement = document.getElementById('popup_title');
+            myElement.textContent = 'Register For upcoming batches';
+            const myElement_sub = document.getElementById('popup_descp');
+            myElement_sub.textContent = 'Dont miss the opportunity.';
+            const image = document.getElementById('image-container');
+            image.src = 'assets/images/course/course-09.jpg';
+            console.error(error);
         });
+
+        $("#iosClick").click(function(){
+        window.location=$(this).find("a").attr("href"); return false;
+        });
+        
+        $("#andriodClick").click(function(){
+        window.location=$(this).find("a").attr("href"); return false;
+        });
+        $("#awsClick").click(function(){
+        window.location=$(this).find("a").attr("href"); return false;
+        });
+        $("#digiClick").click(function(){
+        window.location=$(this).find("a").attr("href"); return false;
+        });
+
 </script>
 
 </body>
